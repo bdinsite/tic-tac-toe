@@ -1,0 +1,17 @@
+.wrapper {
+    background-color: #aaa;
+    width: 1000px;
+    height: 1000px;
+}
+
+.container {
+    background-color: #ddd;
+    width: 800px;
+    height: 800px;
+}
+
+.boardContainer {
+    background-color: #f3f3f3;
+    width: 600px;
+    height: 600px;
+}
