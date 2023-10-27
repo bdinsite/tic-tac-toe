@@ -10,7 +10,7 @@
         boardCol.classList.add('boardCol');
         
         for(j=0; j<rows; j++) {
-            const cell = document.createElement('button');
+            const cell = document.createElement('div');
             cell.classList.add(`${i}${j}`);
             boardCol.appendChild(cell);
             boardContainer.appendChild(boardCol);
@@ -29,11 +29,13 @@ function newGame() {
 }
 
 function startGame() {
-    const selectedCell = document.querySelectorAll('.boardCol button');
+    const selectedCell = document.querySelectorAll('.boardCol div');
 
     selectedCell.forEach(cell => cell.addEventListener('click', clickedCell));
 
     function clickedCell(evt) {
+        evt.target.textContent = 'X';
+        console.log(evt.target);
         console.log(evt.target.className);
     }
     
