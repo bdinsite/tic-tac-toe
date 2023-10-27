@@ -1,8 +1,6 @@
+// RENDER GAME BOARD
 (function renderBoard() {
     const boardContainer = document.querySelector('.boardContainer');
-
-    const boardRow = document.createElement('div');
-    boardRow.classList.add('boardRow');
         
     let rows = 3;
     let cols = 3;
@@ -20,3 +18,23 @@
     }
 
 })();
+
+// START NEW GAME
+const startButton = document.querySelector('.newGame');
+startButton.addEventListener('click', newGame);
+
+function newGame() {
+    console.log('Game started');
+    startGame();
+}
+
+function startGame() {
+    const selectedCell = document.querySelectorAll('.boardCol button');
+
+    selectedCell.forEach(cell => cell.addEventListener('click', clickedCell));
+
+    function clickedCell(evt) {
+        console.log(evt.target.className);
+    }
+    
+}
