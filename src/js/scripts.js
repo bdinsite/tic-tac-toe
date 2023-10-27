@@ -1,5 +1,5 @@
 // RENDER GAME BOARD
-(function renderBoard() {
+function renderBoard() {
     const boardContainer = document.querySelector('.boardContainer');
         
     let rows = 3;
@@ -11,19 +11,24 @@
         
         for(j=0; j<rows; j++) {
             const cell = document.createElement('div');
-            cell.classList.add(`${i}${j}`);
+            cell.id = `${i}${j}`;
             boardCol.appendChild(cell);
             boardContainer.appendChild(boardCol);
         }
     }
 
-})();
+}
 
 // START NEW GAME
 const startButton = document.querySelector('.newGame');
 startButton.addEventListener('click', newGame);
 
 function newGame() {
+    const remove = document.querySelectorAll('.boardCol');
+    if(remove){
+        remove.forEach(div => div.remove());
+    };
+    renderBoard();
     console.log('Game started');
     startGame();
 }
@@ -35,8 +40,34 @@ function startGame() {
 
     function clickedCell(evt) {
         evt.target.textContent = 'X';
-        console.log(evt.target);
-        console.log(evt.target.className);
+        computerMove();
     }
     
+}
+
+function computerMove() {
+    console.log('Computer is thinking...');
+    const selectedCell = document.querySelectorAll('.boardCol div');
+    const availableCells = [];
+
+    // Look for empty cell
+    selectedCell.forEach(cell => {
+        if(cell.textContent == '') {
+            availableCells.push(cell.id);
+        }
+    });
+
+    // Pick random empty cell
+    if(availableCells.length > 0) {
+    const pickItem = Math.floor(Math.random()*availableCells.length);
+    const arrItem = availableCells[pickItem];
+    const cellTarget = document.getElementById(arrItem);
+    cellTarget.textContent = 'O';
+    } else {
+        gameOver();
+    }
+}
+
+function gameOver() {
+    console.log("That's all, folks!")
 }
