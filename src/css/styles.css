@@ -22,11 +22,11 @@
     height: 600px;
 }
 
-/* .boardCol button {
+.boardCol button {
     width: 80px;
     height: 80px;
     background: orange;
-} */
+}
 
 .boardCol {
     display: flex;
@@ -40,4 +40,12 @@
     height: 80px;
     background: orange;
     border: 1px solid #aaa;
+}
+
+.boardCol button.unavailable {
+    background: rgb(183, 133, 5);
+}
+
+.boardCol div {
+    cursor: pointer;
 }

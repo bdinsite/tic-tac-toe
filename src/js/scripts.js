@@ -10,7 +10,7 @@ function renderBoard() {
         boardCol.classList.add('boardCol');
         
         for(j=0; j<rows; j++) {
-            const cell = document.createElement('div');
+            const cell = document.createElement('button'); // Switch to button as div cannot be disabled
             cell.id = `${i}${j}`;
             boardCol.appendChild(cell);
             boardContainer.appendChild(boardCol);
@@ -34,12 +34,15 @@ function newGame() {
 }
 
 function startGame() {
-    const selectedCell = document.querySelectorAll('.boardCol div');
+    //const selectedCell = document.querySelectorAll('.boardCol div');
+    const selectedCell = document.querySelectorAll('.boardCol button');
 
     selectedCell.forEach(cell => cell.addEventListener('click', clickedCell));
 
     function clickedCell(evt) {
         evt.target.textContent = 'X';
+        evt.target.classList = 'unavailable';
+        evt.target.disabled = true;
         computerMove();
     }
     
@@ -47,7 +50,8 @@ function startGame() {
 
 function computerMove() {
     console.log('Computer is thinking...');
-    const selectedCell = document.querySelectorAll('.boardCol div');
+    //const selectedCell = document.querySelectorAll('.boardCol div');
+    const selectedCell = document.querySelectorAll('.boardCol button');
     const availableCells = [];
 
     // Look for empty cell
@@ -63,6 +67,8 @@ function computerMove() {
     const arrItem = availableCells[pickItem];
     const cellTarget = document.getElementById(arrItem);
     cellTarget.textContent = 'O';
+    cellTarget.classList = 'unavailable';
+    cellTarget.disabled = true;
     } else {
         gameOver();
     }
