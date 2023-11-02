@@ -1,32 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Rock+Salt&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Rock Salt';
+}
+
+header {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100px;
+    background-image: url(../img/banner.jpg);
+}
+
+header h1 {
+    color: #ddd;
+    font-size: 40px;
 }
 
 .wrapper {
-    background-color: #aaa;
+    display: flex;
+    align-content: center;
+    /* background-color: #aaa; */
     width: 1000px;
     height: 1000px;
 }
 
 .container {
-    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: auto;
+    position: relative;
+    /* background-color: #ddd; */
     width: 800px;
     height: 800px;
 }
 
+.newGame {
+    margin: 50px auto;
+    width: 345px;
+    font-weight: bold;
+    border-radius: 10px;
+    /* background-color: to-right cornflowerblue, darkblue; */
+    background: dodgerblue; 
+    /* background: -moz-linear-gradient(left,  dodgerblue 0%, rgba(132, 164, 185, 0.555) 100%); */
+}
+
 .boardContainer {
-    background-color: #f3f3f3;
-    width: 600px;
-    height: 600px;
+    background-image: url(../img/board.jpg);
+    margin: 0 auto;
+    width: 345px;
+    height: 345px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 1px 2px #aaa;
 }
 
 .boardCol button {
-    width: 80px;
-    height: 80px;
-    background: orange;
+    width: 115px;
+    height: 115px;
+    background: inherit;
+    border: 1px;
+    
+    /* background: orange;
+    border: 1px solid inherit;
+    box-shadow: 2px 2px 1px 2px #aaa; */
+    color: #c5c5c5;
+    font-size: 40px;
+    font-weight: bolder;
 }
+
+
+/* .boardCol button.unavailable {
+    background: rgb(183, 133, 5);
+} */
 
 .boardCol {
     display: flex;
@@ -42,10 +91,12 @@
     border: 1px solid #aaa;
 }
 
-.boardCol button.unavailable {
-    background: rgb(183, 133, 5);
-}
-
 .boardCol div {
     cursor: pointer;
+}
+
+h2 {
+    display: flex;
+    margin: 50px auto;
+    font-size: 70px;
 }
