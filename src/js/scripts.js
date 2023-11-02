@@ -24,16 +24,22 @@ const startButton = document.querySelector('.newGame');
 startButton.addEventListener('click', newGame);
 
 function newGame() {
-    const remove = document.querySelectorAll('.boardCol');
+    const remove = document.querySelectorAll('.boardCol'); // Old game board
+    const h2 = document.querySelector('h2'); // Old winner message from gameOver();
     if(remove){
         remove.forEach(div => div.remove());
+    };
+    if(h2){
+        h2.remove();
     };
     renderBoard();
     console.log('Game started');
     startGame();
 }
 
+// PLAYER
 function startGame() {
+    //const selectedCell = document.querySelectorAll('.boardCol div');
     const selectedCell = document.querySelectorAll('.boardCol button');
 
     selectedCell.forEach(cell => cell.addEventListener('click', clickedCell));
@@ -47,6 +53,7 @@ function startGame() {
     }
     
 }
+
 
 // COMPUTER
 function computerMove() {
@@ -69,9 +76,11 @@ function computerMove() {
 }
 
 function emptyCells(availableCells, player) {
+    //console.log(availableCells);
     if(availableCells.length == 0) {
+        //gameOver();
         checkWinner(player);
-        return true;
+        return true; // We want the previous step to end if this is true
     }
 }
 
@@ -80,6 +89,7 @@ function pickRandomCell(availableCells, player) {
     const arrItem = availableCells[pickItem];
     const cellTarget = document.getElementById(arrItem);
     cellTarget.textContent = 'O';
+    cellTarget.classList = 'unavailable';
     cellTarget.disabled = true;
     checkWinner(player);
 }
@@ -166,24 +176,36 @@ function checkArray(playerArr, computerArr, player) {
             return;
         }
     ;
+    // console.log(playerArr);
+    // console.log(computerArr);
+    // console.log(playerArr.length + computerArr.length);
     checkTie(playerArr, computerArr, player);
 }
 
 function checkTie(playerArr, computerArr, player) {
-    if(playerArr.length + computerArr.lengt == 12) {
+    if(playerArr.length + computerArr.length == 9) {
         gameOver("It's a bloody tie!");
+        return;
     }
     checkTurn(player);
+    //gameOver(computerArr);
 }
 
 function checkTurn(player) {
     if(player == 'Player'){
         computerMove();
+    // } else if(player == 'Computer') {
+    //     startGame();
     }
 }
 
+// GAME OVER
 function gameOver(input) {
+    const container = document.querySelector('.container');
+    const h2 = document.createElement('h2');
     const cells = document.querySelectorAll('.boardCol button');
     cells.forEach(cell => cell.disabled = true);
+    h2.textContent = input;
+    container.appendChild(h2);
     console.log(input);
 }
