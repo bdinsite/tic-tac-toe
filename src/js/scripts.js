@@ -201,7 +201,7 @@ function checkTurn(player) {
 
 // GAME OVER
 function gameOver(input) {
-    const container = document.querySelector('.container');
+    const container = document.querySelector('.wrapper .container');
     const h2 = document.createElement('h2');
     const cells = document.querySelectorAll('.boardCol button');
     cells.forEach(cell => cell.disabled = true);
